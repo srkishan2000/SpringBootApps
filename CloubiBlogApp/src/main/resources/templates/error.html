@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Error Page</title>
+    
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+
+            <h2>Service is not available</h2>
+            <table>
+                <tr>
+                    <td>Date</td>
+                    <td th:text="${timestamp}" />
+                </tr>
+                <tr>
+                    <td>Path</td>
+                    <td th:text="${path}" />
+                </tr>
+                <tr>
+                    <td>Error</td>
+                    <td th:text="${error}" />
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td th:text="${status}" />
+                </tr>
+                <tr>
+                    <td>Message</td>
+                    <td th:text="${message}" />
+                </tr>
+                <tr>
+                    <td>Exception</td>
+                    <td th:text="${exception}" />
+                </tr>
+                <tr>
+                    <td>Trace</td>
+                    <td>
+                        <pre th:text="${trace}" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        </div>
+</body>
+</html>

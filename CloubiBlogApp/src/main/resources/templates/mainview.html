@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Blogapp</title>
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="container">
+        
+        <p><h1>Main View</h1> </p>
+        <p><input type="button" class="btn btn-info" value="Add New Post" th:onClick="location.href='/addnewblog'" /> </p> 
+       
+        <p>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Text</th>
+                <th>Date</th>
+                <th></th>
+            </tr>
+            </thead>
+
+            <tbody th:remove="all-but-first">
+                <tr th:each="blog : ${blogs}">
+                    <td th:text="${blog.blogTitle}"></td>
+                    <td th:text="${blog.blogText}"></td>
+                    <td th:text="${#dates.format(blog.date, 'dd/MMM/yyyy : HH:MM:SSS')}"></td>
+                    <td>
+                        <input type="button" class="btn btn-info" value="View" th:onclick="'window.location.href = \'' + @{/viewblog/{id}(id=${blog.id})} + '\''">
+                        <input type="button" class="btn btn-info" value="Delete" th:onclick="'window.location.href = \'' + @{/deleteblog/{id}(id=${blog.id})} + '\''">
+                    </td>
+                </tr>
+            </tbody>
+            
+        </table>
+        </p>
+    </div>   
+</body>
+</html>

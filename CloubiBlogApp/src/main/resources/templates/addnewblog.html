@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Blogapp</title>
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="container">
+       <p><h1>Add View</h1></p>
+       <p>
+       <form th:action="@{/saveblog}" th:object="${blog}" method="post">
+            <table>
+                <tr>
+                    <td>
+                        <label for="blogTitle">Title</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" th:field="${blog.blogTitle}" autofocus="autofocus" />
+                        <span th:if="${emptyTitle}" style="color:red;">Title cannot be empty</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="blogText">Text</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea rows="5" cols="50" th:field="${blog.blogText}" autofocus="autofocus"></textarea>
+                        <span th:if="${emptyText}" style="color:red;">Text cannot be empty</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        <input type="button" class="btn btn-info" value="Cancel" th:onclick="location.href='/'">
+                        <input type="submit" class="btn btn-info" value="Save Blog">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        </p>
+    </div>
+</body>
+
+</html>

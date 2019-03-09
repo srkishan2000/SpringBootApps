@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Blogapp</title>
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="container">
+        <p>
+            <h1>Blog View</h1>
+        </p>
+        <p>
+            <table class="table table-striped">
+                <tr>
+                    <th width="100px" align="right">
+                        <label for="blogTitle">Title : </label>
+                    </th>
+               
+                    <th th:text="${blog.blogTitle}"></th>
+                </tr>
+                <tr>
+                    <th align="right">
+                        <label for="blogText">Text : </label>
+                    </th>
+                    <td th:text="${blog.blogText}"></td>
+                </tr>
+            </table>
+            
+            <input type="button" class="btn btn-info" value="Back" th:onClick="location.href='/'">
+            <input type="button" class="btn btn-info" value="Edit" th:onclick="'window.location.href = \'' + @{/editblog/{id}(id=${blog.id})} + '\''">
+            <input type="button" class="btn btn-info" value="Delete" th:onclick="'window.location.href = \'' + @{/deleteblog/{id}(id=${blog.id})} + '\''">
+        </p>
+    </div>
+</body>
+
+</html>
