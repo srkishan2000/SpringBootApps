@@ -6,7 +6,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="Blog")
-public class Blog {
+public class Blog implements Comparable<Blog> {
 	@Id
 	private String id;
 	private String blogTitle;
@@ -41,5 +41,10 @@ public class Blog {
 	@Override
 	public String toString() {
 		return "Blog [id=" + id + ", blogTitle=" + blogTitle + ", blogText=" + blogText + ", date=" + date + "]";
+	}
+	
+	@Override
+	public int compareTo(Blog o) {
+		return getDate().compareTo(o.getDate());
 	}
 }
